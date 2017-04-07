@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog3</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= link_to 'Home', '/' %> ||
+  	<%= link_to 'Blogs', '/blogs' %> ||
+    <%= link_to 'Articles', articles_path %> ||
+    <%= link_to 'Contact Us', '/contactus' %> ||
+    <%= link_to 'Privacy Policy', '/privacy' %> ||
+    <%= link_to 'About Us', '/aboutus' %> || 
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %> </p>
+    <div id="user_nav">
+    
+  <% if user_signed_in? %>
+    Signed in as <%= current_user.email %>. Not you?
+    Firstname: <%=current_user.first_name  %>
+        Lastname: <%=current_user.last_name  %>
+    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+  <% else %>
+    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+  <% end %>
+  </div>
+
+<%= yield %>
+  </body>
+</html>
