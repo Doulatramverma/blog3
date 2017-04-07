@@ -42,6 +42,9 @@ class ArticlesController < ApplicationController
  
     redirect_to articles_path
   end
+   def profile
+    
+   end
 
  private
   def article_params
